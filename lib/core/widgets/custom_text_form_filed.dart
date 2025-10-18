@@ -1,27 +1,36 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class CustomTextFormFiled extends StatelessWidget {
-  const CustomTextFormFiled({super.key});
+  const CustomTextFormFiled({super.key, required this.title, required this.isSuffex});
+  final String title;
+
+  final bool isSuffex;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: TextFormField(
-        decoration: InputDecoration(
-          focusedBorder: buildOutlineInputBorder(),
-          enabledBorder: buildOutlineInputBorder(),
-          fillColor: const Color(0xFFF9FAFA),
-          filled: true,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4),
-          ),
-          //hintText: 'البريد الإلكتروني',
-          label: Text(
-            'البريد الإلكتروني',
+    return TextFormField(
+      obscureText:isSuffex ,
+      decoration: InputDecoration(
         
+        focusedBorder: buildOutlineInputBorder(),
+        enabledBorder: buildOutlineInputBorder(),
+        fillColor: const Color(0xFFF9FAFA),
+        filled: true,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(4),
         ),
-      ),
+        label: Text(
+          title,
+        ),
+        
+        suffixIcon: Visibility(
+          visible: isSuffex,
+          child:Icon(Icons.password_sharp),
+          ),
+    
+       
       ),
     );
   }
