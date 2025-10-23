@@ -8,7 +8,7 @@ import 'package:nti3/features/auth/domine/entities/user_entity.dart';
 import 'package:nti3/features/auth/domine/redo/auth_repo.dart';
 
 class AuthRepoImple extends AuthRepo {
-  AuthRepoImple(this.authServes);
+  AuthRepoImple( this.authServes);
   AuthServes authServes;
   @override
   Future<Either<Faluir,UserEntity>> createUserWithEmailAndPassword(
