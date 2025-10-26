@@ -3,15 +3,17 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 
 class CustomTextFormFiled extends StatelessWidget {
-  const CustomTextFormFiled({super.key, required this.title, required this.isSuffex});
+  const CustomTextFormFiled({super.key, required this.title, required this.isSuffex,required this.onsaved});
   final String title;
 
   final bool isSuffex;
+  final  Function(String?) onsaved;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       obscureText:isSuffex ,
+      onSaved: onsaved,
       decoration: InputDecoration(
         
         focusedBorder: buildOutlineInputBorder(),

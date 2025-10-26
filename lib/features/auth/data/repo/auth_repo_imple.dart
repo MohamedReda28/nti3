@@ -28,7 +28,7 @@ class AuthRepoImple extends AuthRepo {
 
       }catch(e){
 
-       return left(FirebaseError(errmassege:e.toString()));
+       return left(FirebaseError(errmassege:"حدث خكأ حاول لاحقا"));
 
       }
     

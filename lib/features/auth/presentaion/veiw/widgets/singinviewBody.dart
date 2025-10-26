@@ -12,14 +12,16 @@ class SinginVeiwBody extends StatelessWidget{
     return Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-          const CustomTextFormFiled(
+           CustomTextFormFiled(
+            onsaved: (val){},
             title: 'البريد الإلكتروني',
             isSuffex: false,
           ),
           const SizedBox(
             height: 4,
           ),
-          const CustomTextFormFiled(
+           CustomTextFormFiled(
+            onsaved: (val){},
             title: 'كلمة المرور',
             isSuffex: true,
           ),
@@ -31,6 +33,7 @@ class SinginVeiwBody extends StatelessWidget{
             height: 33,
           ),
           CustomBottom(
+            ontap: (){},
             title: 'تسجيل دخول',
           ),
           const SizedBox(

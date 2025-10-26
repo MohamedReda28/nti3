@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nti3/core/widgets/Custom_Botton.dart';
-
+import 'package:nti3/features/auth/presentaion/mangment/cubit/singup_cubit.dart';
+import 'package:nti3/features/auth/presentaion/veiw/SignupView.dart';
 import '../../../../../core/widgets/custom_text_form_filed.dart';
 import 'Dont Have Account Widgh.dart';
-
-
 
 class SignupViewBody extends StatefulWidget {
   const SignupViewBody({super.key});
@@ -16,8 +16,7 @@ class SignupViewBody extends StatefulWidget {
 class _SignupViewBodyState extends State<SignupViewBody> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
-  late String email, password, name;
-  late bool change = false;
+  //late String email, password, name;
 
   @override
   Widget build(BuildContext context) {
@@ -31,21 +30,30 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               const SizedBox(
                 height: 16,
               ),
-              const CustomTextFormFiled(
-                title:'الاسم بالكامل',
+              CustomTextFormFiled(
+                onsaved: (val) {
+                 // name = val!;
+                },
+                title: 'الاسم بالكامل',
                 isSuffex: false,
               ),
               const SizedBox(
                 height: 16,
               ),
-              const CustomTextFormFiled(
+              CustomTextFormFiled(
+                onsaved: (val) {
+                 // email = val!;
+                },
                 title: 'البريد الإلكتروني',
                 isSuffex: false,
               ),
               const SizedBox(
                 height: 16,
               ),
-              const CustomTextFormFiled(
+              CustomTextFormFiled(
+                onsaved: (val) {
+                  //password = val!;
+                },
                 title: 'كلمه المرور',
                 isSuffex: true,
               ),
@@ -53,6 +61,12 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 height: 16,
               ),
               CustomBottom(
+                ontap: () {
+                  context.read<SingupCubit>().createUserWithEmailAndPassword(
+                      email: 'moahmed123@gmail.com',
+                      password: '123456789',
+                      name: 'mohamed');
+                },
                 title: 'إنشاء حساب جديد',
               ),
               const SizedBox(
