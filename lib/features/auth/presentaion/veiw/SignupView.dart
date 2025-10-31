@@ -1,8 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:nti3/features/auth/data/repo/auth_repo_imple.dart';
 import 'package:nti3/features/auth/domine/redo/auth_repo.dart';
 import 'package:nti3/features/auth/presentaion/mangment/cubit/singup_cubit.dart';
 import 'package:nti3/features/auth/presentaion/veiw/widgets/SignupViewBody.dart';
@@ -23,6 +21,7 @@ class SignUpView extends StatelessWidget {
         body: BlocConsumer<SingupCubit, SingupState>(
           listener: (context, state) {
             if (state is SingupSuccess) {
+              Navigator.pop(context);
               return BuildSnakBar(context, 'تم انشاء حساب');
             }
             if (state is SingupFaluir) {

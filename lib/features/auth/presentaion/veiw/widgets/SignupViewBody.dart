@@ -1,10 +1,12 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nti3/core/widgets/Custom_Botton.dart';
-import 'package:nti3/features/auth/presentaion/mangment/cubit/singup_cubit.dart';
-import 'package:nti3/features/auth/presentaion/veiw/SignupView.dart';
+import '../../../../../core/help_function/build_snackbar.dart';
+import '../../../../../core/widgets/Custom_Botton.dart';
 import '../../../../../core/widgets/custom_text_form_filed.dart';
+import '../../mangment/cubit/singup_cubit.dart';
 import 'Dont Have Account Widgh.dart';
+import 'Terms And Condetion.dart';
 
 class SignupViewBody extends StatefulWidget {
   const SignupViewBody({super.key});
@@ -16,7 +18,8 @@ class SignupViewBody extends StatefulWidget {
 class _SignupViewBodyState extends State<SignupViewBody> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
-  //late String email, password, name;
+  late String email, password, name;
+  late bool change = false;
 
   @override
   Widget build(BuildContext context) {
@@ -25,49 +28,67 @@ class _SignupViewBodyState extends State<SignupViewBody> {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Form(
           key: formKey,
+          autovalidateMode: autoValidateMode,
           child: Column(
             children: [
               const SizedBox(
                 height: 16,
               ),
               CustomTextFormFiled(
-                onsaved: (val) {
-                 // name = val!;
+                onsaved: (value) {
+                  name = value!;
                 },
-                title: 'الاسم بالكامل',
+                title: 'الاسم كامل',
+               isSuffex: false,
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              CustomTextFormFiled(
+                onsaved: (value) {
+                  email = value!;
+                },
+                title: ' البريد الإلكتروني',
                 isSuffex: false,
               ),
               const SizedBox(
                 height: 16,
               ),
               CustomTextFormFiled(
-                onsaved: (val) {
-                 // email = val!;
+                onsaved: (value) {
+                  password = value!;
                 },
-                title: 'البريد الإلكتروني',
-                isSuffex: false,
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              CustomTextFormFiled(
-                onsaved: (val) {
-                  //password = val!;
-                },
-                title: 'كلمه المرور',
+                title: 'ككلمه المررور',
                 isSuffex: true,
               ),
               const SizedBox(
                 height: 16,
               ),
-              CustomBottom(
-                ontap: () {
-                  context.read<SingupCubit>().createUserWithEmailAndPassword(
-                      email: 'moahmed123@gmail.com',
-                      password: '123456789',
-                      name: 'mohamed');
+              TermsAndCondetion(
+                changed: (value) {
+                  change = value;
                 },
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              CustomBottom(
                 title: 'إنشاء حساب جديد',
+                ontap: () {
+                  if (formKey.currentState!.validate()) {
+                    formKey.currentState!.save();
+                    if (change) {
+                      context.read<SingupCubit>().createUserWithEmailAndPassword(
+                          name: name, email: email, password: password);
+                    } else {
+                      BuildSnakBar(context, 'يجب الموافقه علي الشروط والاحكام');
+                    }
+                  } else {
+                    setState(() {
+                      autoValidateMode = AutovalidateMode.always;
+                    });
+                  }
+                },
               ),
               const SizedBox(
                 height: 26,

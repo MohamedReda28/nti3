@@ -14,11 +14,34 @@ class UserModel {
         name: user. displayName?? '', email: user.email ?? '', uID: user.uid);
   }
 
+
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    return UserModel(
+        name: json['name'], email: json['email'], uID: json['uId']);
+  }
+
+
+  factory UserModel.fromEntity(UserEntity userEntity){
+    return UserModel(name:userEntity.name , email: userEntity.email, uID: userEntity.uID);
+  }
+
+
+
+
+
   UserEntity toEntity(){
 
     return UserEntity(name: name, email: email, uID: uID);
 
    }
+
+  toMap(){
+     return {
+      "name": name,
+      'email':email,
+      'uID':uID,
+     };
+  } 
 
   
 

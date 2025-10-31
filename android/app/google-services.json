@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "214860244237",
-    "project_id": "nti3-f80c4",
-    "storage_bucket": "nti3-f80c4.firebasestorage.app"
+    "project_number": "665858257582",
+    "project_id": "nti3-e757a",
+    "storage_bucket": "nti3-e757a.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:214860244237:android:a8943b9a785008c507bc44",
+        "mobilesdk_app_id": "1:665858257582:android:dd99b6e95b4d519457b33f",
         "android_client_info": {
           "package_name": "com.example.nti3v"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCaURIH3bi9IATq9HPjMP8yc0l47_53lfw"
+          "current_key": "AIzaSyDIa2_HnOvEtULf0uXqT4fOMpctvEWfY5w"
         }
       ],
       "services": {
